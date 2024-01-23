@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- to access thymeleaf in html (Extensible markup language namespace)-->
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Navigation Bar</title>
+	<style>
+		*{
+			margin: 0px;
+            padding: 0px;
+		}
+        body{
+            width:100%;
+            height:100vh;
+            background-image:linear-gradient(rgba(0, 0, 0, 0.692),rgba(128, 128, 128, 0.767)), url('media/pexels-karolina-grabowska-4386442.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+		.navbar{
+			background: rgb(237, 219, 27); 
+            font-family: calibri; 
+            padding-right: 15px;
+            padding-left: 15px;
+            height: 9%;
+		}
+		.navdiv{
+			display: flex; 
+            align-items: center;
+            justify-content: space-between;
+		}
+        .logo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+		.logo a{
+			font-size: 35px; 
+            font-weight: 600; 
+            color: white;
+		}
+        .logo img{
+            mix-blend-mode: multiply;
+            width: 40px;
+            height:40px;
+        }
+		li{
+            display: inline-block;
+		}
+		li a{
+			color: white; 
+            font-size: 18px; 
+            font-weight: bold; 
+            margin-right: 25px;
+		}
+		button{
+			background-color: black; 
+            margin-left: 10px; 
+            border-radius:9px; 
+            padding: 10px; 
+            width: 90px;
+            margin-top: 9px;
+		}
+		button a{
+			color: white; 
+            font-weight: bold; 
+            font-size: 15px;
+		}
+        h1{
+            font-size:40px;
+            color: rgb(10, 192, 37);
+         }
+     #form{
+        border:1px solid black;
+        width:650px;
+        height:500px;
+        background-image: url('media/pexels-karolina-grabowska-6328858.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-top:60px;
+        border-radius: 20px;
+     }
+     .label{
+        position:relative;
+        padding-left:50px;
+        float:left;
+        font-size:30px;
+        border-radius: 15px;
+        color: maroon; 
+        font-weight: 700;  
+     }
+     .input{
+        position:relative;
+        float:right;
+        margin-right:70px;
+        font-size:25px;
+        border-radius: 10px;
+        padding-left: 4px;
+     }
+     #button{
+         font-size:20px;
+         margin-left:60px;
+         margin-right:60px;
+         padding:10px;
+         border-radius: 15px;
+         width: 150px;
+     }
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="navdiv">
+			<div class="logo">
+                <img src="media/purse.png">
+                <a>Expenses Tracker</a> 
+            </div>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<button><a href="login">Login</a></button>
+			</ul>
+		</div>
+	</nav>
+    <center><div >
+        <form id="form" action="registerOperation" method="post">
+             <center><h1>!!!Register</h1></center><br><br>
+             <label class="label">Name</label>
+             <input class="input" name="fullName" type="text" placeholder="Enter FullName"><br><br><br>
+              <label class="label">User Name</label>
+             <input class="input" name="userName" type="text" placeholder="Enter UserName"><br><br><br>
+               <label class="label">Mobile</label>
+             <input class="input" name="mobile" type="text" placeholder="Enter mobile"><br><br><br>
+               <label class="label">Email</label>
+             <input class="input" name="email" type="text" placeholder="Enter Email"><br><br><br>
+             <label class="label">Password</label>
+             <input class="input" name="password" type="text" placeholder="Enter Password"><br><br><br>
+             <label class="label">Re Password</label>
+             <input class="input" name="cpassword" type="text" placeholder="Re-enter Password" ><br><br><br>
+             <input id="button" type="submit" value="Register">                   
+        </form>
+    </div>
+    <div>
+		<h1 th:text="${msg}"></h1>
+	</div>
+    </center>
+</body>
+</html>

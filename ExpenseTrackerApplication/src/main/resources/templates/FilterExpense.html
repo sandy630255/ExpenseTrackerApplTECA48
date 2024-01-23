@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Navigation Bar</title>
+	<style>
+		*{
+			margin: 0px;
+            padding: 0px;
+		}
+        body{
+            width:100%;
+            height:100vh;
+            background-image:url(media/pexels-pratikxox-4025825.jpg);
+            background-size: 100% 100vh;
+            color: blue;
+        }
+		.navbar{
+			background: rgb(237, 219, 27); 
+            font-family: calibri; 
+            padding-right: 15px;
+            padding-left: 15px;
+            height: 9%;
+		}
+		.navdiv{
+			display: flex; 
+            align-items: center;
+            justify-content: space-between;
+		}
+        .logo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1px;
+        }
+		.logo a{
+			font-size: 35px; 
+            font-weight: 600; 
+            color: white;
+		}
+        .logo img{
+            mix-blend-mode: multiply;
+            width: 40px;
+            height:40px;
+        }
+		li{
+            display: inline-block;
+            margin-top: 6px;
+		}
+        li img{
+            width: 40px;
+            height: 40px;
+        }
+        #icon{
+            margin-top: 8px;
+            width: 30px;
+            height: 30px;
+            margin-left: 420px;
+        }
+        .containe5{
+            width:650px;
+            height: 400px;
+            background:url(media/pexels-simon-berger-1323550.jpg);
+            background-size:650px 400px ;
+            margin-top: 80px;
+            border: 2px solid rgb(221, 26, 199);
+            border-radius: 30px;
+        }
+        form{
+            margin-top: 16px;
+        }
+        .lable{
+            margin-left: -223px;
+            font-size: 20px;
+        }
+        .lable2{
+            margin-left: -263px;
+        }
+        .input1{
+            width: 300px;
+            height: 30px;
+            border-radius: 8px;
+        }
+        #button{
+            width: 85px;
+            height: 35px;
+            border-radius: 8px;
+            background-color: rgb(38, 206, 38);
+            color: white;
+        }
+                .dropdown {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 500px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:azure;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+        }
+
+        .dropdown-content a:hover {
+            background:#f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="navdiv">
+			<div class="logo">
+                <img src="media/purse.png">
+                <a>Expenses Tracker</a>
+                <div>
+                <a href="home"><img id="icon" src="media/house-black-silhouette-without-door.png"></a>
+            	</div> 
+                <div class="dropdown">
+                    <img class="ion" src="media/user.png">
+                  <div class="dropdown-content">
+                    <a href="#">About</a>
+                    <a href="#">Profile</a>
+                    <a href="#">contact us</a>
+                    <a href="logout">Logout</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+	</nav>
+    <center>
+        <div class="containe5">
+            <form  action="/expense/filterExpense">
+            <h1>Filter Expenses</h1><br><br>
+            <label class="lable">Category</label><br>
+             <input list="sublist" class="input1" type="text" placeholder="Category" ><br><br>
+                <datalist id="sublist">
+                  <option value="Utilities"></option>
+                        <option value ="Transportation"></option>
+                        <option value="Groceries"></option>
+                        <option value="Dining out"></option>
+                        <option value ="Entertainment"></option>
+                        <option value="HealthCare" ></option>
+                        <option value="Education"></option>
+                        <option value="Personal Care"></option>
+                        <option value="Clothing"></option>
+                        <option value="Home Maintainance"></option>
+                        <option value="Gifts & Donations"></option>
+                        <option value="Saving & investments"></option>
+                        <option value="Tax"></option>
+                        <option value="Others"></option>
+                </datalist>
+            <label class="lable">Amount</label><br>
+            <input class="input1" type="text" placeholder="Amount"><br><br>
+            <label class="lable2">Date</label><br>
+            <input class="input1" type="date"><br><br><br>
+            <input id="button" type="submit" value="submit">
+            </form>
+        </div>
+    </center>
+</body>
+</html>

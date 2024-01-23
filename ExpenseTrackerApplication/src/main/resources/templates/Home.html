@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Navigation Bar</title>
+	<style>
+		*{
+			margin: 0px;
+            padding: 0px;
+		}
+        body{
+            width:100%;
+            height:100vh;
+            background-image: linear-gradient(to bottom,rgb(236, 185, 193),rgb(164, 224, 238),rgb(242, 242, 136),rgb(131, 224, 131));
+            color: blue;
+        }
+		.navbar{
+			background: rgb(237, 219, 27); 
+            font-family: calibri; 
+            padding-right: 15px;
+            padding-left: 15px;
+            height: 9%;
+		}
+		.navdiv{
+			display: flex; 
+            align-items: center;
+            justify-content: space-between;
+		}
+        .logo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            margin-top: -2px;
+        }
+		.logo a{
+			font-size: 35px; 
+            font-weight: 600; 
+            color: white;
+		}
+        .logo img{
+            mix-blend-mode: multiply;
+            width: 40px;
+            height:40px;
+        }
+		li{
+            display: inline-block;
+            margin-top: 6px;
+		}
+        .ion{
+            width: 40px;
+            height: 40px;
+        }
+        .icon{
+            width: 50px;
+            height: 50px;
+        }
+        .heading{
+            font-size: 30px;
+            text-decoration: none;
+        }
+        .container1{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 95px;
+            gap: 175px;
+        }
+        
+        h1{
+            margin-top: 10px;
+        }
+        .tranform{
+            border-radius: 8px;
+            background-image: linear-gradient(to bottom,rgb(0, 255, 0),rgb(185, 216, 236),rgb(205, 137, 200),rgb(255, 255, 128));
+            width: 190px;
+            height: 100px;
+        }
+        .tranform:hover{
+            transform: scale(1.2);
+        }
+        .dropdown {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 955px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:transparent;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+        }
+
+        .dropdown-content a:hover {
+            background:#f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="navdiv">
+			<div class="logo">
+                <img src="media/purse.png">
+                <a>Expenses Tracker</a> 
+                <div class="dropdown">
+                    <img class="ion" src="media/user.png">
+                  <div class="dropdown-content">
+                    <a href="#">About</a>
+                    <a href="#">Profile</a>
+                    <a href="#">contact us</a>
+                    <a href="logout">Logout</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+	</nav>
+    <center>
+        <form method="post">
+			<!-- <h1>Welcome <span th:text="${userInfo.fullName}"></span></h1> -->
+            <marquee behavior="" direction="right"><h1>Welcome <span th:if="${session != null}" th:text="${session.userData.fullName}"></span></h1></marquee>
+        <div class="container1">
+            <div class="tranform">
+                <img class="icon" src="media/save-money.png"><br>
+                <a class="heading" href="addExpense">Add Expenses</a>
+            </div>
+            <div class="tranform">
+                <img class="icon" src="media/show.png"><br>
+                <a class="heading" href="/expense/displayExpense">View Expenses</a>
+            </div>
+        </div>
+        <div class="container1">
+            <div class="tranform">
+                <img class="icon" src="media/sigma.png"><br>
+                <a class="heading" href="totalExpense">Total Expenses</a>
+            </div>
+            <div class="tranform">
+                <img class="icon" src="media/filter.png"><br>
+                <a class="heading" href="filterExpense">Filter Expenses</a>
+            </div>
+        </div>
+        </form>
+    </center>
+</body>
+</html>

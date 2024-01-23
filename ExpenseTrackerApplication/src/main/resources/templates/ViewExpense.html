@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Document</title>
+    <style>
+		*{
+			margin: 0px;
+            padding: 0px;
+		}
+        body{
+            width:100%;
+            height:100vh;
+            background-image:linear-gradient(to bottom,rgb(236, 185, 193),rgb(164, 224, 238),rgb(242, 242, 136),rgb(131, 224, 131));
+            color: rgb(255, 136, 0);
+            background-size: 100% 100vh;
+        }
+		.navbar{
+			background: rgb(237, 219, 27); 
+            font-family: calibri; 
+            padding-right: 15px;
+            padding-left: 15px;
+            height: 9%;
+		}
+		.navdiv{
+			display: flex; 
+            align-items: center;
+            justify-content: space-between;
+		}
+        .logo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1px;
+        }
+        .logo a{
+			font-size: 35px; 
+            font-weight: 600; 
+            color: white;
+		}
+        .logo img{
+            mix-blend-mode: multiply;
+            width: 40px;
+            height:40px;
+        }
+        #icon{
+            margin-top: 8px;
+            width: 30px;
+            height: 30px;
+            margin-left: 420px;
+        }
+        li{
+            display: inline-block;
+            margin-top: 6px;
+		}
+        .ion{
+            width: 40px;
+            height: 40px;
+        }
+        #last
+        {
+            width:86vw;
+            height: 65vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border: 3px solid blue;
+            margin-left: 95px;
+            margin-top: 40px;
+            border-color:honeydew;
+        }
+        td,th
+        {
+            border: solid 2px black;
+        }
+        #tab
+        {
+            border-collapse: collapse;
+            margin-left: -1px;
+            width:86vw;
+            height: 65vh;
+            font-size: 20px;
+            text-align: center;
+            overflow-y: auto;
+        }
+        #taskbar
+        {
+            width:100vw;
+            height:53px;
+            background-color: rgb(229, 198, 203);
+            position: absolute;
+            bottom: 0px;
+        }
+        #copy
+        {
+            font-size: 25px;
+            margin-left: 38vw;
+            position: absolute;
+            top:17px;
+        }
+        .dropdown {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 500px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:transparent;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+        }
+
+        .dropdown-content a:hover {
+            background:#f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .bts{
+			height: 25px;
+			width: 80px;
+			border-radius: 5px;
+			border: none;
+			font-size: 15px;
+			background-color: greenyellow;
+			border-style: groove;
+		}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+		<div class="navdiv">
+			<div class="logo">
+                <img src="media/purse.png">
+                <a>Expenses Tracker</a>
+                <div>
+                <a th:href="${home}"><img id="icon" th:src="@{media/house-black-silhouette-without-door.png}"></a>
+            	</div> 
+                <div class="dropdown">
+                    <img class="ion" src="media/user.png">
+                  <div class="dropdown-content">
+                    <a href="#">About</a>
+                    <a href="#">Profile</a>
+                    <a href="#">contact us</a>
+                    <a href="logout">Logout</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+	</nav>
+        <div id="last">
+            <table id="tab">
+			   <thead>
+                <tr>
+                    <th style="font-weight: bold;">SL.No</th>
+                    <th style="font-weight: bold;">Date</th>
+                    <th style="font-weight: bold;">Amount</th>
+                    <th style="font-weight: bold;">Category</th> 
+                    <th style="font-weight: bold;">Description</th>
+                    <th style="font-weight: bold;">Action</th>
+                </tr>
+               </thead>
+               <tbody>
+                <tr th:each="e, iterator : ${list}">
+                    <td th:text="${iterator.index+1}"></td>
+                    <td th:text="${e.date}"></td>
+                    <td th:text="${e.amount}"></td>
+                    <td th:text="${e.expenseCategory}"></td>
+                    <td th:text="${e.Description}"></td>
+                    <td>
+						<form action="/updateExpense">
+							<input th:value="${e.expenseId}" hidden name="eId">
+						<button class="bts">Update</button>
+						</form>
+						<form action="/expense/deleteExpense">
+							<input th:value="${e.expenseId}" hidden name="eId">
+							<button class="bts">Delete</button>
+						</form>
+						
+					</td>
+                </tr>
+                </tbody>
+                 <h1 th:if="${sum} != null">Total <span th:text="${sum}"></span></h1>
+            </table>
+            
+             <center><h1 style="color:red;" th:if="${list.empty}">NO RECORDS FOUND</h1></center>
+        </div>
+        <div id="taskbar">
+            <h1 id="copy">Copyright © 2023 by SandeepJammula</h1>
+        </div>
+</body>
+</html>

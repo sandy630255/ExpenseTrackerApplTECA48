@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Navigation Bar</title>
+	<style>
+		*{
+			margin: 0px;
+            padding: 0px;
+		}
+        body{
+            width:100%;
+            height:100vh;
+            background-image: linear-gradient(to bottom,rgb(236, 185, 193),rgb(164, 224, 238),rgb(242, 242, 136),rgb(131, 224, 131));
+            color: blue;
+        }
+		.navbar{
+			background: rgb(237, 219, 27); 
+            font-family: calibri; 
+            padding-right: 15px;
+            padding-left: 15px;
+            height: 9%;
+		}
+		.navdiv{
+			display: flex; 
+            align-items: center;
+            justify-content: space-between;
+		}
+        .logo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1px;
+        }
+		.logo a{
+			font-size: 35px; 
+            font-weight: 600; 
+            color: white;
+		}
+        .logo img{
+            mix-blend-mode: multiply;
+            width: 40px;
+            height:40px;
+        }
+        #icon{
+            margin-top: 8px;
+            width: 30px;
+            height: 30px;
+            margin-left: 420px;
+        }
+		li{
+            display: inline-block;
+            margin-top: 6px;
+		}
+        li img{
+            width: 40px;
+            height: 40px;
+        }
+        .bigcontainer{
+            display: flex;
+            flex-direction:row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+        }
+        .image{
+            width: 400px;
+            height: 400px;
+        }
+        .container3{
+            background:transparent;
+            width: 500px;
+            height:500px;
+            margin-left: 10px;
+        }
+        .container4{
+            background:transparent;
+            width: 500px;
+            height: 500px;
+        }
+        form{
+            margin-top: 35px;
+        }
+        h1{
+            color: blueviolet;
+            font-family:cursive;
+            font-size: 30px;
+        }
+        .input{
+            border-radius: 8px;
+            width: 270px;
+            height: 30px;
+            padding-left: 4px;
+        }
+        .input1{
+            border-radius: 8px;
+            width: 270px;
+            height: 80px;
+            padding-left: 4px;
+        }
+        .input2{
+            border-radius: 8px;
+            width: 279px;
+            height: 34px;
+            padding-left: 4px;
+        }
+        button{
+            border-radius: 10px;
+            background-color: greenyellow;
+            width: 80px;
+            height: 30px;
+        }
+        .dropdown {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 500px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:transparent;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+        }
+
+        .dropdown-content a:hover {
+            background:#f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="navdiv">
+			<div class="logo">
+                <img src="media/purse.png">
+                <a>Expenses Tracker</a>
+                <div>
+                <a href="home"><img id="icon" src="media/house-black-silhouette-without-door.png"></a>
+            	</div> 
+                <div class="dropdown">
+                    <img class="ion" src="media/user.png">
+                  <div class="dropdown-content">
+                    <a href="#">About</a>
+                    <a href="#">Profile</a>
+                    <a href="#">contact us</a>
+                    <a href="logout">Logout</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+	</nav>
+    <center>
+    <div class="bigcontainer">
+        <div class="container4">
+            <img class="image" src="media/wallet3.png">
+        </div>
+        <div class="container3">
+            <form action="/expense/addExpense">
+                <h1>Add Expenses</h1><br><br>
+                <input class="input" name="amount" type="text" placeholder="amount"><br><br>
+                <input class="input" name="expenseDate" placeholder="date" type="date"><br><br>
+                 <input list="sublist" class="input2" type="text" placeholder="Category" name="expenseCategory"><br><br>
+                <datalist id="sublist">
+                   <option value="Utilities"></option>
+                        <option value ="Transportation"></option>
+                        <option value="Groceries"></option>
+                        <option value="Dining out"></option>
+                        <option value ="Entertainment"></option>
+                        <option value="HealthCare" ></option>
+                        <option value="Education"></option>
+                        <option value="Personal Care"></option>
+                        <option value="Clothing"></option>
+                        <option value="Home Maintainance"></option>
+                        <option value="Gifts & Donations"></option>
+                        <option value="Saving & investments"></option>
+                        <option value="Tax"></option>
+                        <option value="Others"></option>
+                </datalist>
+                <input class="input1" name="Description" type="text" placeholder="Description"><br><br>
+                <button>Add +</button>
+            </form>
+        </div>
+    </div>
+    </center>
+</body>
+</html>
